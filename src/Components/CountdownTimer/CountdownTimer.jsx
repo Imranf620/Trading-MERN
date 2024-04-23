@@ -75,7 +75,7 @@ const CountdownTimer = ({ startTimeInSeconds }) => {
   const formattedTime = formatTime(time);
 
   return (
-    <div className="flex flex-col  gap-8 items-center pt-10 h-max bg-transparent w-full lg:w-2/3  rounded-2xl  ">
+    <div className="flex flex-col border-2 border-black blurred-background content   gap-8 items-center pt-10 h-max bg-transparent w-full lg:w-2/3  rounded-2xl  ">
       <div className="flex items-center gap-12 bg-gray-800 text-white  p-6 rounded-lg shadow-lg">
         <div className="flex flex-col items-center">
           <span className="text-4xl font-bold h-max overflow-y-hidden">

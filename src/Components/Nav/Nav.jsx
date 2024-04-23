@@ -60,15 +60,15 @@ const Nav = () => {
   return (
     <>
       <div
-        className=" h-[120vh] relative top-0 overflow-y-scroll w-[100vw] "
+        className=" h-auto  relative top-0 overflow-y-scroll w-[100vw] "
         id="home"
       >
-        <div className="image w-[100vw] h-[120vh] absolute"></div>
+        <div className="image w-[100vw] h-[170vh] md:h-[120vh] absolute"></div>
 
         {/* <div className=" blackbg w-[100vw] h-[100vh] absolute "> </div> */}
         <div
-          className={`w-[100vw] flex justify-between items-center py-4 px-8 fixed transition-all duration-300 ${
-            scrolled ? "bg-white shadow" : "bg-transparent"
+          className={`w-[100vw] flex justify-between z-50 items-center py-4 px-8 fixed transition-all duration-300 ${
+            scrolled ? "bg-black shadow" : "bg-transparent"
           } ${isOpen === true ? "navopen" : ""}`}
         >
           <a href="#home">
@@ -81,7 +81,7 @@ const Nav = () => {
             </div>
           </a>
           <div
-            className={` hidden  text-black  lg:flex gap-12 lg:text-sm font-semibold  ${
+            className={` hidden  text-white  lg:flex gap-12 lg:text-sm font-semibold  ${
               scrolled ? "text-black" : "bg-transparent"
             } ${isOpen === true ? "verticalnav" : ""}`}
           >
@@ -105,15 +105,15 @@ const Nav = () => {
               } `}
             >
               <FontAwesomeIcon
-                className=" border-[1px] rounded-full text-black border-black p-2 w-4 h-4"
+                className=" border-[1px] rounded-full text-white border-white p-2 w-4 h-4"
                 icon={faTwitter}
               />
               <FontAwesomeIcon
-                className=" border-[1px] rounded-full text-black border-black p-2 w-4 h-4"
+                className=" border-[1px] rounded-full text-white border-white p-2 w-4 h-4"
                 icon={faTelegram}
               />
               <button
-                className={`text-sm bg-transparent  px-4 py-3 font-semibold md:px-7 text-black border-black border-[1px] rounded ${
+                className={`text-sm bg-transparent  px-4 py-3 font-semibold md:px-7 text-white border-white border-[1px] rounded ${
                   isOpen === true ? "btnopen" : ""
                 }  `}
               >
@@ -121,7 +121,7 @@ const Nav = () => {
               </button>
 
               <div
-                className={`flex text-black items-center gap-2 ${
+                className={`flex text-white items-center gap-2 ${
                   isOpen === true ? "btnopen" : ""
                 } `}
               >
@@ -185,7 +185,7 @@ const Nav = () => {
             )}
           </div>
         </div>
-        <div className="flex justify-between   mt-16">
+        <div className="flex flex-col  justify-between md:px-16  gap-20 md:gap-0  mt-16 items-end md:flex-row">
           <div className="w-[100vw]">
             <CountdownTimer
               startTimeInSeconds={
@@ -194,22 +194,42 @@ const Nav = () => {
             />
           </div>
 
-          <div>
-            <div
+          <div className="mb-32 md:ml-0">
+            <div>
+
+            <h1
+              className="text-2xl font-bold"
               style={{
                 color: "white",
                 textShadow: `
-                -1px -1px 0 black,
-                1px -1px 0 black,
-                -1px 1px 0 black,
-                1px 1px 0 black
-    `,
+              -1px -1px 0 blue,
+              1px -1px 0 blue,
+              -1px 1px 0 blue,
+              1px 1px 0 blue
+  `,
               }}
-            >
+              >
               DOGEVERSE
-            </div>
-            <p></p>
-            <div>The World’s First Chain Traveling Doge</div>
+            </h1>
+            <h1
+              className="text-4xl h-28 font-bold"
+              style={{
+                color: "white",
+                textShadow: `
+                -1px -1px 0 blue,
+                1px -1px 0 blue,
+                -1px 1px 0 blue,
+                1px 1px 0 blue
+                `,
+              }}
+              >
+              The World’s First Chain Traveling Doge
+            </h1>
+              </div>
+              <div className="flex gap-5">
+                <button className="border-black  duration-300 text-white  border-2 px-4 py-2 rounded-3xl bg-gradient-to-tr from-blue-400 via-purple-500 w-40  to-pink-600 text-xl font-bold ">White Paper</button>
+                <button className="border-black  duration-300 text-white  border-2 px-4 py-2 rounded-3xl w-40 text-xl font-bold ">Audit</button>
+              </div>
           </div>
         </div>
       </div>
