@@ -8,7 +8,7 @@ class Router {
       // Routes
       router.use("/wallet", keplrRoutes);  
       // default index route
-      router.get("/", (_, res) => res.send("Welcome to Auto-app."));
+      router.get("/", (_, res) => res.send("Welcome to Wallet-app."));
   
       return router;
     };
