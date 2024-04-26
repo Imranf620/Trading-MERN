@@ -1,10 +1,19 @@
 import React from 'react'
+import Navbar from '../Navbar/Navbar'
+import { useLocation } from 'react-router-dom'
 
 const Phases = () => {
+
+    const location  = useLocation()
+    console.log(location.state)
   return (
     <div className='galaxyImage h-auto'>
-        
-        <div className='flex flex-col px-8 py-32 gap-24 md:gap-10px  ' >
+        <div className='bg-[#20202B]'>
+
+        <Navbar/>
+        </div>
+        <div className='flex flex-col px-8  gap-24 md:gap-10px py-14  ' >
+            <h1 className='text-white font-black text-5xl text-center h-max overflow-y-hidden'>Road Map</h1>
             <div className='flex flex-col gap-1 items-start'>
                 <h1 className='text-2xl font-bold text-white'>Phase 2: Development</h1>
                 <ul className='list-disc ml-4'>

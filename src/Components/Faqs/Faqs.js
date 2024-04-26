@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import Navbar from "../Navbar/Navbar";
 
 const Faqs = () => {
   const [expanded, setExpanded] = useState(Array(8).fill(false));
@@ -62,54 +63,60 @@ const Faqs = () => {
   ];
 
   return (
-    <div className=" px-16 mx-auto w-full overflow-hidden py-14 galaxyImage">
-      <div className="flex flex-col gap-[30px]">
-        <div className="flex justify-center gap-10 items-center">
-          <div className="text-white text-3xl font-semibold pt-10 overflow-y-hidden">
-            Frequently Asked Questions 
-          </div>
-      
-        </div>
-        {faqs.map((faq, index) => (
-          <div
-            key={index}
-            className="flex flex-col gap-3 border-b border-gray-300"
-          >
-            <div
-              className="flex items-center cursor-pointer pb-2"
-              onClick={() => toggleExpand(index)}
-            >
-              <div className="text-white text-md font-bold flex-grow">
-                {faq.question}
-              </div>
-              <motion.div
-                className="ml-2"
-                animate={{ rotate: expanded[index] ? 180 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <FontAwesomeIcon icon={faChevronDown} className="text-white" />
-              </motion.div>
+    <>
+      <Navbar />
+
+      <div className=" px-16 mx-auto w-full overflow-hidden py-14 galaxyImage">
+        <div className="flex flex-col gap-[30px]">
+          <div className="flex justify-center gap-10 items-center">
+            <div className="text-white text-3xl font-semibold pt-10 overflow-y-hidden">
+              Frequently Asked Questions
             </div>
-            {expanded[index] && (
-              <motion.div
-                className="text-white text-sm mt-2 "
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                transition={{ duration: 0.3 }}
-              >
-                {faq.answer}
-              </motion.div>
-            )}
-            <motion.div
-              className=""
-              initial={{ scaleY: 0 }}
-              animate={{ scaleY: expanded[index] ? 1 : 0 }}
-              transition={{ duration: 0.3 }}
-            />
           </div>
-        ))}
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className="flex flex-col gap-3 border-b border-gray-300"
+            >
+              <div
+                className="flex items-center cursor-pointer pb-2"
+                onClick={() => toggleExpand(index)}
+              >
+                <div className="text-white text-md font-bold flex-grow">
+                  {faq.question}
+                </div>
+                <motion.div
+                  className="ml-2"
+                  animate={{ rotate: expanded[index] ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <FontAwesomeIcon
+                    icon={faChevronDown}
+                    className="text-white"
+                  />
+                </motion.div>
+              </div>
+              {expanded[index] && (
+                <motion.div
+                  className="text-white text-sm mt-2 "
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {faq.answer}
+                </motion.div>
+              )}
+              <motion.div
+                className=""
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: expanded[index] ? 1 : 0 }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

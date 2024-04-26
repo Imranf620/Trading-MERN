@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./nav.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTelegram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faAngleDown, faEarthAmerica } from "@fortawesome/free-solid-svg-icons";
 import CountdownTimer from "../CountdownTimer/CountdownTimer";
+import { Link } from "react-router-dom";
+import ShowContext from "../../context/ShowContext";
 
 const Nav = () => {
+  const {handleShow} = useContext(ShowContext)
+
   const oneDayThreeHoursTwentyFiveMinutesFortyTwoSeconds =
     1 * 3600 * 24 + 3 * 3600 + 25 * 60 + 42;
 
@@ -38,6 +42,8 @@ const Nav = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -60,7 +66,7 @@ const Nav = () => {
   return (
     <>
       <div
-        className=" h-auto  relative top-0 overflow-y-scroll w-[100vw] "
+        className=" h-max  relative top-0 overflow-y-hidden w-[100vw] "
         id="home"
       >
         <div className="image w-[100vw] h-[170vh] md:h-[120vh] absolute"></div>
@@ -71,28 +77,17 @@ const Nav = () => {
             scrolled ? "bg-black shadow" : "bg-transparent"
           } ${isOpen === true ? "navopen" : ""}`}
         >
-          <a href="#home">
-            <div
-              className={`text-white hidden md:block  ${
-                scrolled ? "text-black" : "bg-transparent"
-              } ${isOpen === true ? "portopen" : ""}`}
-            >
-              Portfolio
-            </div>
-          </a>
+        
           <div
             className={` hidden  text-white  lg:flex gap-12 lg:text-sm font-semibold  ${
               scrolled ? "text-black" : "bg-transparent"
             } ${isOpen === true ? "verticalnav" : ""}`}
           >
-            <a href="#home" className={`home `}>
+            <Link to="/" className={`home h-max overflow-y-hidden  text-3xl font-bold`}>
               {" "}
-              STAKING{" "}
-            </a>
-            <a href="#about">ABOUT</a>
-            <a href="#skills"> ROADMAP</a>
-            <a href="#portfolio">HOW TO BUY</a>
-            <a href="#contact">FAQ</a>
+              Home{" "}
+            </Link>
+          
           </div>
           <div
             className={`flex  items-center gap-4  ${
@@ -117,8 +112,14 @@ const Nav = () => {
                   isOpen === true ? "btnopen" : ""
                 }  `}
               >
-                LOGIN
+                 <Link
+            className="hover:text-gray-400 transition h-max overflow-y-hidden"
+            onClick={() => handleShow()}
+          >
+            Connect Wallet
+          </Link>
               </button>
+            
 
               <div
                 className={`flex text-white items-center gap-2 ${
@@ -132,61 +133,12 @@ const Nav = () => {
                 </div>
               </div>
             </div>
-            {!scrolled && (
-              <div className={`hamburger-menu  `} onClick={toggleMenu}>
-                <div
-                  className={
-                    isOpen
-                      ? "hamburger-menu__bar open "
-                      : "hamburger-menu__bar "
-                  }
-                ></div>
-                <div
-                  className={
-                    isOpen
-                      ? "hamburger-menu__bar open "
-                      : "hamburger-menu__bar "
-                  }
-                ></div>
-                <div
-                  className={
-                    isOpen
-                      ? "hamburger-menu__bar open "
-                      : "hamburger-menu__bar "
-                  }
-                ></div>
-              </div>
-            )}
+        
 
-            {scrolled && (
-              <div className={`hamburger-menu  `} onClick={toggleMenu}>
-                <div
-                  className={
-                    isOpen
-                      ? "hamburger-menu__bar open black-ham  "
-                      : "hamburger-menu__bar black-ham  "
-                  }
-                ></div>
-                <div
-                  className={
-                    isOpen
-                      ? "hamburger-menu__bar open black-ham  "
-                      : "hamburger-menu__bar black-ham  "
-                  }
-                ></div>
-                <div
-                  className={
-                    isOpen
-                      ? "hamburger-menu__bar open black-ham  "
-                      : "hamburger-menu__bar black-ham  "
-                  }
-                ></div>
-              </div>
-            )}
           </div>
         </div>
-        <div className="flex flex-col  justify-between md:px-16  gap-20 md:gap-0  mt-16 items-end md:flex-row">
-          <div className="w-[100vw]">
+        <div className="flex   justify-center items-center mt-28   ">
+          <div className="w-[100%] md:w-[50%]  px-4">
             <CountdownTimer
               startTimeInSeconds={
                 oneDayThreeHoursTwentyFiveMinutesFortyTwoSeconds
@@ -194,7 +146,7 @@ const Nav = () => {
             />
           </div>
 
-          <div className="mb-32 md:ml-0">
+          {/* <div className="mb-32 md:ml-0">
             <div>
 
             <h1
@@ -230,7 +182,7 @@ const Nav = () => {
                 <button className="border-black  duration-300 text-white  border-2 px-4 py-2 rounded-3xl bg-gradient-to-tr from-blue-400 via-purple-500 w-40  to-pink-600 text-xl font-bold ">White Paper</button>
                 <button className="border-black  duration-300 text-white  border-2 px-4 py-2 rounded-3xl w-40 text-xl font-bold ">Audit</button>
               </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
