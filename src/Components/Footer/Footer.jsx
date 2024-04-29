@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import ShowContext from "../../context/ShowContext";
 
 const Footer = () => {
+  const {black} = useContext(ShowContext)
   return (
-    <div className="galaxyImage uppercase">
-      <footer className="flex flex-col md:flex-row justify-between text-lg md:text-xl lg:text-2xl font-bold text-white px-4 md:px-7 py-14 md:py-28">
+    <div className=" uppercase">
+      <hr />
+      <footer className={`flex flex-col md:flex-row justify-between text-lg md:text-xl lg:text-2xl font-bold ${black===true?"text-white":"text-black"} px-4 md:px-7 py-14 md:py-28`}>
         {/* Left section with information */}
         <div className="flex flex-col md:w-1/2 lg:w-2/5 gap-6">
           {/* Main menu links */}

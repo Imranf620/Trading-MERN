@@ -1,19 +1,16 @@
 import { faEthereum } from "@fortawesome/free-brands-svg-icons";
-import {
-  faInfo,
-  faUsd,
-
-  faDollar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faInfo, faUsd, faDollar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import ShowContext from "../../context/ShowContext";
 
 const CountdownTimer = ({ startTimeInSeconds }) => {
+
+
+  
+  const { black } = useContext(ShowContext);
   const [inputVal, setInputVal] = useState("");
   const [inputVal2, setInputVal2] = useState("");
-
-
-
 
   let duration = 10;
 
@@ -59,36 +56,36 @@ const CountdownTimer = ({ startTimeInSeconds }) => {
   const formattedTime = formatTime(time);
 
   return (
-    <div className="flex flex-col border-2 border-black h-full text-white  bg-black    gap-8 items-center pt-10 bg-transparent w-full lg:w-2/3  rounded-2xl  ">
-      <div className="flex items-center gap-12 bg-gray-800   p-6 rounded-lg shadow-lg">
+    <div className={`flex flex-col border-2 border-black h-full bg-transparent    gap-8 items-center pt-10  w-full lg:w-2/3  rounded-2xl ${black === true ? "text-white" : "text-black"}  `}>
+      <div className="flex items-center gap-12 bg-gray-800  text-white  p-6 rounded-lg shadow-lg">
         <div className="flex flex-col items-center">
           <span className="text-4xl font-bold h-max overflow-y-hidden">
             {formattedTime.days}
           </span>
-          <span className="text-sm">Days</span>
+          <span className="text-sm h-max overflow-y-hidden">Days</span>
         </div>
         <div className="flex flex-col items-center">
           <span className="text-4xl font-bold h-max overflow-y-hidden">
             {formattedTime.hours}
           </span>
-          <span className="text-sm">Hours</span>
+          <span className="text-sm h-max overflow-y-hidden">Hours</span>
         </div>
         <div className="flex flex-col items-center">
           <span className="text-4xl font-bold h-max overflow-y-hidden">
             {formattedTime.minutes}
           </span>
-          <span className="text-sm">Minutes</span>
+          <span className="text-sm h-max overflow-y-hidden">Minutes</span>
         </div>
         <div className="flex flex-col items-center">
           <span className="text-4xl font-bold h-max overflow-y-hidden">
             {formattedTime.seconds}
           </span>
-          <span className="text-sm">Seconds</span>
+          <span className="text-sm h-max overflow-y-hidden">Seconds</span>
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <h1 className="text-sm font-bold ">
-          USDT RAISED: $9,124,256.08 / $10,181,775
+        <h1 className="text-sm font-bold h-max overflow-y-hidden ">
+          Usdt raised to add this " INJ RAISED 5000 INJ / 5000 INJ"
         </h1>
         <div className="relative">
           <div className=" absolute top-0 left-0  min-h-full bg-red-400 p-3  rounded-3xl w-2/3 ">
@@ -98,53 +95,54 @@ const CountdownTimer = ({ startTimeInSeconds }) => {
             {" "}
           </div>
         </div>
-        <div className="flex gap-2 items-center justify-between ">
+        <div className="flex gap-2 flex-col items-center justify-between ">
           {" "}
-          <h1 className="text-sm font-bold ">
-            YOUR PURCHASED $DOGEVERSE = 0{" "}
+          <h1 className="text-sm font-bold h-max overflow-y-hidden ">
+            TOKEN NAME " JCLUB "
           </h1>{" "}
-          <FontAwesomeIcon
-            className="rounded-full  border-white border-2 h-3 w-3 p-1"
-            icon={faInfo}
-          />
+          <h1 className="text-sm font-bold h-max overflow-y-hidden ">
+            TOKEN SUPPLY " 1 B "
+          </h1>{" "}
+          <h1 className="text-sm font-bold h-max overflow-y-hidden ">
+            PRESALE PRICE " 0.004$ "
+          </h1>{" "}
         </div>
-        <div className="flex gap-2 items-center justify-between ">
+        <div className="flex flex-col gap-2 items-center justify-between ">
           {" "}
-          <h1 className="text-sm font-bold ">
-            YOUR STAKEABLE $DOGEVERSE = 0
+          <h1 className="text-sm font-bold h-max overflow-y-hidden ">
+            YOUR Purchased " any amount
           </h1>{" "}
-          <FontAwesomeIcon
-            className="rounded-full  border-white border-2 h-3 w-3 p-1"
-            icon={faInfo}
-          />
         </div>
         <div className="flex justify-between items-center">
-          <h1 className="font-bold ">-------</h1>
-          <h1 className="text-sm font-bold ">
-            1 $DOGEVERSE = $0.0003
+          <h1 className="font-bold h-max overflow-y-hidden">-------</h1>
+          <h1 className="text-sm font-bold h-max overflow-y-hidden">
+            1 $INJ = 0.004$
           </h1>
-          <h1 className="font-bold ">-------</h1>
+          <h1 className="font-bold h-max overflow-y-hidden">-------</h1>
         </div>
 
         <div className="flex justify-between">
-          <button
-           
-            className="flex justify-between gap-4 items-center border-white border-[1px] rounded px-4 py-2"
-          >
-            <FontAwesomeIcon
-              className=" w-max text-blue-500"
-              icon={faUsd}
-            />
-            <h1 className="text-sm font-bold ">USD</h1>
+          <button className="flex w-full justify-between gap-4 items-center border-white border-[1px] rounded px-4 py-2">
+            <FontAwesomeIcon className=" w-max text-blue-500" icon={faUsd} />
+            <h1 className="text-sm font-bold h-max overflow-y-hidden ">USD</h1>
           </button>
-         
         </div>
 
-        <div className="flex gap-2">
-         
-            <h1 className="text-xs font-bold ">USD</h1>
-       
-          <h1 className="text-xs font-bold ">You Pay</h1>
+        <div className="flex justify-between">
+          <div className="flex gap-2">
+            <h1 className="text-xs font-bold h-max overflow-y-hidden">USD</h1>
+
+            <h1 className="text-xs font-bold h-max overflow-y-hidden">
+              You Pay
+            </h1>
+          </div>
+          <div className="flex gap-2">
+            <h1 className="text-xs font-bold h-max overflow-y-hidden">INJ</h1>
+
+            <h1 className="text-xs font-bold h-max overflow-y-hidden">
+              You Receive
+            </h1>
+          </div>
         </div>
 
         <div className="flex gap-8 justify-between w-[30vw]">
@@ -158,11 +156,11 @@ const CountdownTimer = ({ startTimeInSeconds }) => {
               id=""
               className="bg-transparent focus:outline-none "
             />
-            
-              <FontAwesomeIcon
-                icon={faDollar}
-                className="text-xl font-bold text-blue-500"
-              />
+
+            <FontAwesomeIcon
+              icon={faDollar}
+              className="text-xl font-bold text-blue-500"
+            />
           </div>
           <div className="bg-transparent border-[1px]  rounded py-3 flex justify-between  px-4 items-center ">
             <input
@@ -182,9 +180,7 @@ const CountdownTimer = ({ startTimeInSeconds }) => {
           </div>
         </div>
 
-       
-
-        <h1 className="text-center font-bold text-sm ">
+        <h1 className="text-center font-bold text-sm h-max overflow-y-hidden">
           Widget powered by Web3Toolkit <br />A Web3 Company
         </h1>
       </div>

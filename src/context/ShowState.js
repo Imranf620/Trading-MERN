@@ -4,6 +4,12 @@ import ShowContext from "./ShowContext";
 const ShowState = ({children})=>{
     const [show, setShow] = useState(false)
 
+    const [preSail, setPreSail] = useState(false)
+
+    const handlePreSail = ()=>{
+        setPreSail(!preSail)
+    }
+
     const handleShow = ()=>{
         setShow(!show)
     }
@@ -15,7 +21,7 @@ const ShowState = ({children})=>{
     }
 
     return (
-        <ShowContext.Provider value={{show, handleShow, black, handleBlack}}>
+        <ShowContext.Provider value={{show, handleShow, black, handleBlack, handlePreSail, preSail}}>
             {children}
         </ShowContext.Provider>
     )

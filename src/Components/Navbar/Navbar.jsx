@@ -24,10 +24,10 @@ const Navbar = () => {
     <div className={`relative duration-300 ${black===true?'text-white':"text-black"}  ${isMenuOpen ===true?'h-[80vh]':""}`}>
       <div className="   py-12 flex justify-between items-center ">
         <div className="flex items-center">
-          <FontAwesomeIcon icon={faCartArrowDown} className="text-2xl" />
-          <span className="ml-4 text-xl font-bold h-max overflow-y-hidden">
+          <FontAwesomeIcon   icon={faCartArrowDown} className="text-2xl cursor-pointer" />
+          <Link  to="/" className="ml-4 text-xl font-bold h-max overflow-y-hidden cursor-pointer">
             Brand
-          </span>
+          </Link>
         </div>
 
         {/* Desktop Menu */}
@@ -39,7 +39,7 @@ const Navbar = () => {
             Home
           </Link>
           <Link
-            to="roadmap"
+            to="/roadmap"
             className="hover:text-gray-400 transition h-max overflow-y-hidden"
           >
             Roadmap
@@ -65,7 +65,7 @@ const Navbar = () => {
           <FontAwesomeIcon
             icon={black===true?faMoon:faSun}
             onClick={()=>handleBlack()}
-            className="hover:text-gray-400 transition cursor-pointer"
+            className="hover:text-gray-400 transition cursor-pointer mt-[3px]"
           />
           <Link
             className="hover:text-gray-400 transition h-max overflow-y-hidden"

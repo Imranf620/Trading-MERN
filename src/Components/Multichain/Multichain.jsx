@@ -1,17 +1,19 @@
 import { faEthereum } from "@fortawesome/free-brands-svg-icons";
 import { faDotCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useContext } from "react";
+import ShowContext from "../../context/ShowContext";
 
 const Multichain = () => {
+  const { black } = useContext(ShowContext);
   return (
-    <div className="h-auto py-16 galaxyImage flex justify-center items-center  ">
-      <div className="blurred-background rounded-3xl  ">
+    <div className={`h-auto py-16  flex justify-center items-center ${black===true?'text-white':'text-black'} `} >
+      <div className={`blurred-background rounded-3xl  border-black `}>
         <div className="flex flex-col justify-between  gap-6 items-center content">
-          <h1 className="text-4xl font-bold h-max overflow-y-hidden text-white">
+          <h1 className="text-4xl font-bold h-max overflow-y-hidden ">
             DOGE GOES MULTICHAIN
           </h1>
-          <h1 className="text-white text-3xl font-semibold overflow-hidden">
+          <h1 className=" text-3xl font-semibold overflow-hidden">
             Buy and claim <span className="gradient-text">$DOGEVERSE</span> on
             any of these chains
           </h1>
