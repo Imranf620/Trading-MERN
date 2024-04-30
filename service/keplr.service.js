@@ -1,7 +1,7 @@
 // package import
 
 // local import
-const Wallet = require("../controller/keplr.controller");
+const Wallet = require("../database");
 
 module.exports = class {
     static createWallet = async(chainId, lcdUrl, offlineSigner) =>
