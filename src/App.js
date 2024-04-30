@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "./Pages/Main/Main";
@@ -8,9 +8,37 @@ import Faqs from "./Components/Faqs/Faqs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet, faXmark } from "@fortawesome/free-solid-svg-icons";
 import ShowContext from "./context/ShowContext";
+import axios from "axios";
 
 const App = () => {
   const { show, handleShow } = useContext(ShowContext);
+
+  
+    const enableKeplr = async () => {
+      try {
+        if (!window.keplr) {
+          throw new Error("Keplr extension is not installed");
+        }
+        const chainId = 'cosmoshub-4';
+        await window.keplr.enable(chainId);
+        const offlineSigner = window.getOfflineSigner(chainId);
+        const accounts = await offlineSigner.getAccounts();
+        // Get the first (default) public address
+        const publicAddress = accounts[0].address;
+        const response = await axios.post(`http://localhost:5000/wallet/enablekeplr`, {}, {
+          headers: {
+            'X-Chain-ID': chainId,
+            'X-Public-Address': publicAddress
+          }
+        });
+        console.log("Keplr is enabled--->", response);
+      } catch (error) {
+        console.error("Error enabling Keplr:", error);
+      }
+    };
+
+
+
   return (
     <div>
       <Router>
@@ -53,7 +81,7 @@ const App = () => {
             </div>
             <div
               className="flex items-center gap-4 hover:bg-red-600 hover:text-white py-3 px-6 
-            rounded-lg transition duration-300 ease-in-out cursor-pointer"
+            rounded-lg transition duration-300 ease-in-out cursor-pointer" onClick={enableKeplr}
             >
               <FontAwesomeIcon className="text-3xl " icon={faWallet} />
               <h1 className="text-xl font-bold">Keplr</h1>

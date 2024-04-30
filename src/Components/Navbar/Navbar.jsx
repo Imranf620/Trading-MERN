@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <div className={`relative duration-300 ${black===true?'text-white':"text-black"}  ${isMenuOpen ===true?'h-[80vh]':""}`}>
-      <div className="   py-12 flex justify-between items-center ">
+      <div className="   py-12 flex flex-row-reverse  justify-between items-center ">
         <div className="flex items-center">
           <FontAwesomeIcon   icon={faCartArrowDown} className="text-2xl cursor-pointer" />
           <Link  to="/" className="ml-4 text-xl font-bold h-max overflow-y-hidden cursor-pointer">

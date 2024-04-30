@@ -19,7 +19,7 @@ const Nav = () => {
     <div >
      <Navbar/>
      <div className="flex   justify-center items-center   ">
-          <div className="w-[100%] md:w-[50%]  px-4">
+          <div className="w-[100%] md:w-[60%]  px-4">
             <CountdownTimer
               startTimeInSeconds={
                 oneDayThreeHoursTwentyFiveMinutesFortyTwoSeconds
