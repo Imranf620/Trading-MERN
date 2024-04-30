@@ -1,4 +1,4 @@
-const keplrController  = require('../controller/keplr.controller');
+const { keplrController } = require('../controller');
 const express = require('express');
 const router = express.Router();
 
