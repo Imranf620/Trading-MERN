@@ -37,6 +37,26 @@ const App = () => {
       }
     };
 
+    const enableLeap = async () => {
+      try {
+        if (!window.leap) {
+          throw new Error("leap extension is not installed");
+        }
+        const chainId = 'cosmoshub-4';
+        const x = await window.leap.enable(chainId);
+        console.log("--->", x);
+        // Get the first (default) public address
+        const response = await axios.post(`http://localhost:5000/LeapWallet/enableleap`, {}, {
+          headers: {
+            'X-Chain-ID': chainId,
+          }
+        });
+        console.log("Leap is enabled--->", response);
+      } catch (error) {
+        console.error("Error enabling Leap:", error);
+      }
+    };
+
 
 
   return (
@@ -75,6 +95,7 @@ const App = () => {
             <div
               className="flex items-center gap-4 hover:bg-red-600 hover:text-white py-3 px-6 
             rounded-lg transition duration-300 ease-in-out cursor-pointer"
+            onClick={enableLeap}
             >
               <FontAwesomeIcon className="text-3xl " icon={faWallet} />
               <h1 className="text-xl font-bold">Leap</h1>
