@@ -27,7 +27,7 @@ const walletSchema = new mongoose.Schema(
     );
 
 // Create a model from the schema
-const Wallet = mongoose.model('transaction', walletSchema);
+const Wallet = mongoose.model('transactions', walletSchema);
 
 // Export the User model
 module.exports = Wallet;

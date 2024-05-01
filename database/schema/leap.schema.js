@@ -20,4 +20,4 @@ const LeapwalletSchema = new mongoose.Schema(
 const leapWallet = mongoose.model('transaction', LeapwalletSchema);
 
 // Export the User model
-module.exports = Wallet;
+module.exports = leapWallet;

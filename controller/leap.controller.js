@@ -2,13 +2,19 @@
 
 //local import
 const walletService = require("../service/keplr.service");
+const leapWalletService = require("../service/leap.service");
 
 module.exports = class {
     static async create(req, res) {
         try{
             // const chainId = 'cosmoshub-4';
             // const { chainId } = req.body;console.log(chainId);
-            const result = await walletService(chainId);
+            const chainId = req.headers['x-chain-id'];
+        console.log("s-->",chainId);
+            if (!chainId) {
+              return res.status(400).json({ message: "Missing chainId" });
+            }
+            const result = await leapWalletService(chainId);
             if(!result) {
                 return res.status(400).json({message: " Internal Server Error."});
             }

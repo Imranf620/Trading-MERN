@@ -3,6 +3,6 @@ const express = require('express');
 const router = express.Router();
 
 
-router.post("/enablekeplr", leapController.create);
+router.post("/enableleap", leapController.create);
 
 module.exports = router;
